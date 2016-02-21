@@ -1,3 +1,3 @@
 #!/bin/sh
 
-gcc -std=c99 gssa.c -lm -o gssa
+gcc -std=c99 -Wall -Wpedantic -O3 gssa.c -lm -o gssa
