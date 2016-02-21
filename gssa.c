@@ -1,27 +1,9 @@
+#include "gssa.h"
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
-#include <inttypes.h>
 #include <math.h>
-
-#define RAND_DBL ((double) rand() / (double) RAND_MAX)
-
-struct GSSAState {
-  double time;
-  int32_t reactionNumber;
-  int32_t numberOfMolecules;
-};
-
-struct GSSADef {
-  double k1;
-  double alpha0;
-  double alpha1;
-};
-
-struct systemConf {
-  struct GSSAState state;
-  struct GSSADef system;
-};
 
 struct systemConf GSSAStepPure(struct GSSAState state, struct GSSADef system, double r1, double r2) {
   system.alpha0 = system.alpha1;
