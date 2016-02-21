@@ -4,6 +4,8 @@
 #include <inttypes.h>
 #include <math.h>
 
+#define RAND_DBL ((double) rand() / (double) RAND_MAX)
+
 struct GSSAState {
   double time;
   int32_t reactionNumber;
@@ -20,10 +22,6 @@ struct systemConf {
   struct GSSAState state;
   struct GSSADef system;
 };
-
-double rand01() {
-  return (double) rand() / (double) RAND_MAX;
-}
 
 struct systemConf GSSAStepPure(struct GSSAState state, struct GSSADef system, double r1, double r2) {
   system.alpha0 = system.alpha1;
@@ -44,8 +42,8 @@ struct systemConf GSSAStepPure(struct GSSAState state, struct GSSADef system, do
 }
 
 struct systemConf GSSAStep(struct GSSAState state, struct GSSADef system) {
-  double r1 = rand01();
-  double r2 = rand01();
+  double r1 = RAND_DBL;
+  double r2 = RAND_DBL;
   return GSSAStepPure(state, system, r1, r2);
 }
 
